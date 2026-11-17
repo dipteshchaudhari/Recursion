@@ -1,3 +1,5 @@
+import javax.sound.sampled.LineEvent;
+
 public class Questions {
     public static void main(String[] args) {
         
@@ -30,9 +32,40 @@ public class Questions {
 
         // System.out.println(countZero(10202030));
 
-        System.out.println(countStepsToMakeTheNumberZero(14));
+        // System.out.println(countStepsToMakeTheNumberZero(14));
+
+        // int[] arr = {1,2,4,8,90,5};
+        // System.out.println(sortedOrNot(arr, 0));
+
+        int arr[] = {1,2,3,4,5};
+        int target = 4;
+        
+        int ans = LinearSearch(arr, target, arr.length - 1);
+        System.out.println(ans);
 
     }
+
+    static int LinearSearch(int arr[], int target, int index) {
+
+        if(index == -1) {
+            return -1;
+        }
+        
+        if(arr[index] == target) {
+            return index;
+        }else{
+            return LinearSearch(arr, target, index - 1);
+        }
+    }
+
+    static boolean sortedOrNot(int[] arr,int index) {
+
+        if(index == arr.length - 1) {
+            return true;
+        }
+        return arr[index] < arr[index + 1] && sortedOrNot(arr, index + 1);
+    }
+
     // static int reverse(int n) {
 
     //     int digits = (int)Math.log10(n) + 1;
@@ -133,5 +166,6 @@ public class Questions {
         }else{
             return helper(n - 1, count + 1);
         }
-    } 
+    }
+    
 }
